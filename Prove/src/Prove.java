@@ -8,6 +8,7 @@ import java.util.Scanner;
 
 
 // modifica 1
+// il develop e messo apposto dai 
 public class Prove {
 	
 	static int[] minMax(int[] elenco){       
