@@ -4,6 +4,10 @@ import java.util.Scanner;
 //commmento 
 // commento del develop
 
+
+
+
+// modifica 1
 public class Prove {
 	
 	static int[] minMax(int[] elenco){       
