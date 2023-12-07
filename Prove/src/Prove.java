@@ -1,8 +1,9 @@
 import java.util.Scanner;
 
-
+//commento STOCK
 //commmento 
 // commento del develop
+
 
 public class Prove {
 	
