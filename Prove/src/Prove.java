@@ -48,6 +48,7 @@ public class Prove {
 		
 		System.out.print("il Max è :"+arrayP[0]+"\n");
 		System.out.print("il min è:"+arrayP[1]);
+		System.out.println("by ERNESTO");
 		
 		
 		
