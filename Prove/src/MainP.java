@@ -52,6 +52,15 @@ public class MainP {
 		
 	}
 	
+	public static void functionEx (Integer val) {
+		
+		 Function<Integer, String> toString = i -> String.valueOf(i);
+		 Function<String, Integer> toInteger = s -> Integer.parseInt(s);
+		// andThen
+		 Function<Integer, Integer> combFunction = toString.andThen(toInteger);
+		 System.out.println(combFunction.apply(val));
+	}
+	
 
 	public static void main(String[] args) {
 		int i = 0;
@@ -65,6 +74,7 @@ public class MainP {
 		printCities(cities);
 //		printFirstCharOfCities(supplyCities());
 		predicateEx(1500);
+		functionEx(1280);
 		
 		
 	}
