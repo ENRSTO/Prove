@@ -4,10 +4,19 @@ import java.util.List;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import java.util.function.Predicate;
+import java.util.function.Supplier;
 
 public class MainP {
 	
 	static final List<String> cities = Arrays.asList("Delhi", "Mumbai", "Goa", "Pune");
+	
+	static private List<String> supplyCities() {
+
+	    Supplier<String[]> citySupplier = () -> {
+	        return new String[]{"Mumbai", "Delhi", "Goa", "Pune"};
+	    };
+		return  Arrays.asList(citySupplier.get());
+	}
 	
 	public static void printCities(List<String> cities) {
 
@@ -44,7 +53,7 @@ public class MainP {
 		c1.accept(i);
 //
 		printCities(cities);
-		printFirstCharOfCities(cities);
+		printFirstCharOfCities(supplyCities());
 		
 		
 		
