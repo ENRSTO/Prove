@@ -20,15 +20,15 @@ public class MainP {
 	
 	public static void printCities(List<String> cities) {
 
+		// accepts an argument and returns a boolean
 	    Predicate<String> filterCity = city -> city.equals("Mumbai") || city.equals("Pune");
-	    // restituisce un boolena
-	    Consumer<String> printConsumer = city-> {
+	  
+	    Consumer<String> printConsumer = city-> { 
+	    	// questa è l'implementazione del metodo accept dell'intefaccua Consumer
 	    	String cityf = "->"+city+"<-";
 	    	System.out.println(cityf);
 	    };
-	  
 		cities.stream().filter(filterCity).forEach(printConsumer);
-	    
 	}	
 	
 	public static void printFirstCharOfCities(List<String> cities) {
@@ -42,19 +42,29 @@ public class MainP {
 		
 	}
 	
+	public static void predicateEx (Integer num) {
+		
+		Predicate<Integer> isEven = i -> i % 2 == 0;
+		Predicate<Integer> isPos = i -> i > 0;
+		
+		Predicate<Integer> combinedPredicate = isEven.or(isPos);
+		System.out.println(combinedPredicate.test(num));
+		
+	}
+	
 
 	public static void main(String[] args) {
 		int i = 0;
 
-		Consumer<Integer> c1 = (a) -> {
-		    System.out.println(i);
-		};
-		
-		c1.accept(i);
+//		Consumer<Integer> c1 = (a) -> {
+//			System.out.println(i);
+//		};
+//
+//		c1.accept(i);
 //
 		printCities(cities);
-		printFirstCharOfCities(supplyCities());
-		
+//		printFirstCharOfCities(supplyCities());
+		predicateEx(1500);
 		
 		
 	}
