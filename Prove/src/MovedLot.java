@@ -9,6 +9,9 @@ public class MovedLot {
 	
 	// inizio 21
 	
+	
+	// inizio 
+	
 	  int IDPR;
 	    int IDPRBL;
 	    int IDBLMBL;
@@ -255,4 +258,5 @@ public class MovedLot {
    }
    // fine ehhh 1
    // aggiunta fine 
+  
 }
