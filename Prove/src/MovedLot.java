@@ -11,6 +11,7 @@ public class MovedLot {
 	
 	// erensto 1
 	
+	// ERENSTO 2
 	// inizio 
 	
 	  int IDPR;
