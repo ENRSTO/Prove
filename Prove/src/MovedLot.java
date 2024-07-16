@@ -8,6 +8,7 @@ import java.util.Map;
 public class MovedLot {
 	
 	// inizio 21
+// RIC FER 1
 	
 	// erensto 1
 	
