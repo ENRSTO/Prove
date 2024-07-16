@@ -177,12 +177,19 @@ public class MovedLot {
 	        }
 
 	        for (MovedLot lot : originalList) {
-	            BigDecimal[] quantities = quantityMap.get (lot.getCDLTBL());
-	            if (quantities != null && (quantities[0].compareTo(BigDecimal.ZERO) != 0 || quantities[1].compareTo(BigDecimal.ZERO) != 0)) {
-	                resultList.add (new MovedLot (lot.getIDPR(), lot.getIDPRBL (), lot.getIDBLMBL (), lot.getIDELBL (), lot.getEVENBL(), lot.getCDLTBL(), lot.getTPMOBL (),
-	                    lot.getNROPBL (), lot.getORPRRM (), lot.getSEGNRM(), lot.getCDMGRM(), lot.getCDARRM(), quantities[0], quantities[1]));
-	                quantityMap.remove (lot.getCDLTBL());
-	            }
+	        	if (quantityMap.get (lot.getCDLTBL())==null) {
+	        		continue;
+	        	} else {
+	        		
+	        		BigDecimal[] quantities = quantityMap.get (lot.getCDLTBL());
+	        		
+	        		//    if (quantities != null && (quantities[0].compareTo(BigDecimal.ZERO) != 0 || quantities[1].compareTo(BigDecimal.ZERO) != 0)) {
+	        		resultList.add (new MovedLot (lot.getIDPR(), lot.getIDPRBL (), lot.getIDBLMBL (), lot.getIDELBL (), lot.getEVENBL(), lot.getCDLTBL(), lot.getTPMOBL (),
+	        				lot.getNROPBL (), lot.getORPRRM (), lot.getSEGNRM(), lot.getCDMGRM(), lot.getCDARRM(), quantities[0], quantities[1]));
+	        		quantityMap.remove (lot.getCDLTBL());
+	        		//}
+	        	}
+	        		
 	        }
 	        return resultList;
 	    } // totalizzatore
@@ -207,17 +214,17 @@ public class MovedLot {
 	    
 	
    public static void main(String[] args) {
+	// evento 445566
 	   List<MovedLot> originalList = Arrays.asList(
-	            new MovedLot(-1, -8449, -25659, 5966, 445566, "LT.1", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
+			   new MovedLot(-1, -8449, -25659, 5966, 445566, "LT.1", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
+			   
+	         //new MovedLot(-1, -8449, -25659, 5966, 445566, "LT.1", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000))
 	            new MovedLot(-1, -8450, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(20.0000), BigDecimal.valueOf(20.0000)),
-	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.3", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
-	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.3", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
-	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
-	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(5.0000), BigDecimal.valueOf(5.0000)),
-	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000))
-	         //   new MovedLot(-1, -8455, -25659, 5966, 445566, "LOTT.ES.3", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(17.0000), BigDecimal.valueOf(17.0000)),
-	         //   new MovedLot(-1, -8451, -25659, 5966, 445566, "LOTT.ES.1", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(20.0000), BigDecimal.valueOf(20.0000)),
-	         //   new MovedLot(-1, -8454, -25665, 5968, 445566, "LOTT.ES.1", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(5.0000), BigDecimal.valueOf(5.0000))
+	            new MovedLot(-1, -8450, -25659, 5966, 445566, "LT.3", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000))
+//	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.3", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
+//	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
+//	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(5.0000), BigDecimal.valueOf(5.0000)),
+//	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000))
 	        );
 	   
 	   Map<String, BigDecimal[]> quantityMap = new HashMap<>();
@@ -247,7 +254,7 @@ public class MovedLot {
 	   System.out.println(map);
 	   
 	   for (MovedLot lot : totalizzatore(originalList)) {
-		   if (!lot.getQTA1().equals(BigDecimal.ZERO))
+		 //  if (!lot.getQTA1().equals(BigDecimal.ZERO))
 			   System.out.println(lot);
 	   }
    }
