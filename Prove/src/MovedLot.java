@@ -254,4 +254,5 @@ public class MovedLot {
 	   }
    }
    // fine ehhh 1
+   // aggiunta fine 
 }
