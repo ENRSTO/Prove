@@ -9,6 +9,7 @@ public class MovedLot {
 	
 	// inizio 21
 	
+	// erensto 1
 	
 	// inizio 
 	
