@@ -7,6 +7,8 @@ import java.util.Map;
 
 public class MovedLot {
 	
+	// inizio 21
+	
 	  int IDPR;
 	    int IDPRBL;
 	    int IDBLMBL;
