@@ -7,6 +7,24 @@ import java.util.Map;
 
 public class MovedLot {
 	
+	
+//	public class ErpQuantity {
+//
+//	    public BigDecimal qty = BigDecimal.ZERO;
+//	    public BigDecimal qty2 = BigDecimal.ZERO;
+//
+//	    public ErpQuantity () {
+//	    }
+//
+//	    public ErpQuantity (BigDecimal qty, BigDecimal qty2) {
+//	        this.qty = qty;
+//	        this.qty2 = qty2;
+//
+//	    }
+//
+//	}
+
+	
 	// inizio 21
 // RIC FER 1
 	
@@ -195,7 +213,7 @@ public class MovedLot {
 	        return resultList;
 	    } // totalizzatore
 
-	    public static Map<String, BigDecimal> getNegativeLotMinValues (List<MovedLot> movlotList) {
+	    public static Map<String, BigDecimal> getNegativeLotMinValuesBk (List<MovedLot> movlotList) {
 	        Map<String, BigDecimal> lotMinValues = new HashMap<> ();
 
 	        for (MovedLot movlot : movlotList) {
@@ -212,20 +230,42 @@ public class MovedLot {
 	    }    
 	    
 	    
+	    public static Map<String, ErpQuantity> getNegativeLotMinValues(List<MovedLot> movlotList) {
+	        Map<String, ErpQuantity> lotMinValues = new HashMap<>();
+
+	        for (MovedLot movlot : movlotList) {
+	            if ("-".equals(movlot.getSEGNRM())) {
+	                BigDecimal qta1 = movlot.getQTA1();
+	                BigDecimal qta2 = movlot.getQTA2();
+
+	                if (qta1 != null) {
+	                    lotMinValues.merge(movlot.getCDLTBL(), new ErpQuantity(qta1, qta2), (existingValue, newValue) -> {
+	                        BigDecimal minQty = existingValue.qty.max(newValue.qty);
+	                        BigDecimal minQty2 = existingValue.qty2 != null && newValue.qty2 != null
+	                            ? existingValue.qty2.max(newValue.qty2)
+	                            : (existingValue.qty2 != null ? existingValue.qty2 : newValue.qty2);
+	                        return new ErpQuantity(minQty, minQty2);
+	                    });
+	                }
+	            }
+	        }
+	        return lotMinValues;
+	    } // getNegativeLotMinValues
+	    
 	    
 	
    public static void main(String[] args) {
 	   List<MovedLot> originalList = Arrays.asList(
 	            new MovedLot(-1, -8449, -25659, 5966, 445566, "LT.1", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
-	            new MovedLot(-1, -8450, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(20.0000), BigDecimal.valueOf(20.0000)),
+	            new MovedLot(-1, -8450, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(20.0000), BigDecimal.valueOf(40.0000)),
 	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.3", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
 	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.3", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
 	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000)),
 	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(5.0000), BigDecimal.valueOf(5.0000)),
 	            new MovedLot(-1, -8452, -25659, 5966, 445566, "LT.2", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(10.0000), BigDecimal.valueOf(10.0000))
-	         //   new MovedLot(-1, -8455, -25659, 5966, 445566, "LOTT.ES.3", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(17.0000), BigDecimal.valueOf(17.0000)),
-	         //   new MovedLot(-1, -8451, -25659, 5966, 445566, "LOTT.ES.1", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(20.0000), BigDecimal.valueOf(20.0000)),
-	         //   new MovedLot(-1, -8454, -25665, 5968, 445566, "LOTT.ES.1", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(5.0000), BigDecimal.valueOf(5.0000))
+//	           new MovedLot(-1, -8455, -25659, 5966, 445566, "LOTT.ES.3", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(17.0000), BigDecimal.valueOf(17.0000)),
+//	           new MovedLot(-1, -8451, -25659, 5966, 445566, "LOTT.ES.1", "P", 99946, "8479AVLH", "-", "026", "105415_LT_1", BigDecimal.valueOf(20.0000), BigDecimal.valueOf(20.0000)),
+//	           new MovedLot(-1, -8454, -25665, 5968, 445566, "LOTT.ES.1", "P", 99946, "8479AVLH", "+", "026", "105415_LT_1", BigDecimal.valueOf(5.0000), BigDecimal.valueOf(5.0000))
 	        );
 	   
 	   Map<String, BigDecimal[]> quantityMap = new HashMap<>();
@@ -250,8 +290,11 @@ public class MovedLot {
 //           }
 //       }
 	   
+	   
+	   var map1 = getNegativeLotMinValuesBk(originalList);
 	   var map = getNegativeLotMinValues(originalList);
 	 //  totalizzatore(originalList);
+	   System.out.println(map1);
 	   System.out.println(map);
 	   
 	   for (MovedLot lot : totalizzatore(originalList)) {
