@@ -54,6 +54,7 @@ public class Prove {
 
 		System.out.println("FUFFA1");
 		System.out.println("fuffa3");
+		System.out.println("as");
 		
 	}
 
