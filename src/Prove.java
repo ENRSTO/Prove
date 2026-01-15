@@ -53,7 +53,7 @@ public class Prove {
 		System.out.println("FUFFA");
 
 		System.out.println("FUFFA1");
-		
+		System.out.println("fuffa3");
 		
 	}
 
