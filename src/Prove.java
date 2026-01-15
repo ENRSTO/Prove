@@ -51,6 +51,9 @@ public class Prove {
 		System.out.println("by ERNESTO");
 		
 		System.out.println("FUFFA");
+
+		System.out.println("FUFFA1");
+		
 		
 	}
 
